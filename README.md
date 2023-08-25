@@ -1,4 +1,6 @@
+<p align="center">
 <h1 style="text-align: center;">Ezra Valerio Isacco Di Biase</h1>
+</p>
 
 [//]: ![](/img/schroeder.jpg)
 
