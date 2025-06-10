@@ -6,6 +6,15 @@ on:
   pull_request:
     branches: [ source ]
   workflow_dispatch:
+    inputs:
+      action:
+        type: choice
+        required: true
+        description: 'Scegliere che tipo di azione si vuole operare'
+        options:
+        - install
+        - upgrade
+        - check
   
 # Allows external webhook trigger
   repository_dispatch:
@@ -24,3 +33,8 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: "Message that will be displayed on users' first issue"
         pr-message: "Message that will be displayed on users' first pull request"
+    - name: stampo scelta
+      env:
+        scelta: ${{ github.event.inputs.action }}
+      run: |
+        echo $scelta
