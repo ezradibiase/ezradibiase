@@ -22,8 +22,16 @@ on:
       - greetings
 
 jobs:
-  greeting:
+  run-on-svil:
+    if: ${{ github.event.client_payload.branch == 'svil' }}
     runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running automatically on sviluppo"
+  greeting:
+    if: ${{ github.event.client_payload.branch == 'prod' || github.event.client_payload.branch == 'cert' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
     permissions:
       issues: write
       pull-requests: write
